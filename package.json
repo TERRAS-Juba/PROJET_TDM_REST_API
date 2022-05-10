@@ -1,0 +1,34 @@
+{
+  "name": "service-rest-tdm",
+  "version": "1.0.0",
+  "description": "Projet du module developpement mobile avec kotlin + Rest api avec nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TERRAS-Juba/PROJET_TDM_BACKEND.git"
+  },
+  "author": "TERRAS Juba && AMOKRANE Ilhem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TERRAS-Juba/PROJET_TDM_BACKEND/issues"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-winston": "^4.2.0",
+    "fs": "^0.0.1-security",
+    "logform": "^2.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
+    "path": "^0.12.7",
+    "pg": "^8.7.3",
+    "pg-mem": "^2.3.5",
+    "winston": "^3.7.2"
+  },
+  "homepage": "https://github.com/TERRAS-Juba/PROJET_TDM_BACKEND#readme"
+}
