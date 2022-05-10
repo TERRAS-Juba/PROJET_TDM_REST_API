@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const morgan = require("morgan");
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const cors = require("cors");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +25,7 @@ app.use(
   })
 );
 const routeParking= require("../Routes/RouteParking");
+const routeUtilisateur=require("../Routes/RouteUtilisateur")
 
 // Configurer le serveur pour utiliser toutes les routes
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use(
   })
 );
 app.use("/", routeParking);
+app.use("/",routeUtilisateur)
 app.get("/", (req, res) => {
   res.send("Serveur projet TDM");
 });
