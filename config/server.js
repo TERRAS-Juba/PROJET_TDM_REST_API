@@ -27,6 +27,7 @@ app.use(
 const routeParking= require("../Routes/RouteParking");
 const routeUtilisateur=require("../Routes/RouteUtilisateur")
 const routerEvalaution=require("../Routes/RouteEvalauation")
+const routerPlace=require("../Routes/RoutePlace")
 
 // Configurer le serveur pour utiliser toutes les routes
 app.use(bodyParser.json());
@@ -42,6 +43,7 @@ app.use(
 app.use("/", routeParking);
 app.use("/",routeUtilisateur)
 app.use("/",routerEvalaution)
+app.use("/",routerPlace)
 app.get("/", (req, res) => {
   res.send("Serveur projet TDM");
 });
