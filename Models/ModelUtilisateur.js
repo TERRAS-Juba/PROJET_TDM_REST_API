@@ -5,7 +5,7 @@ const log = require("../config/Logger");
 // Recuperer un utilisateur par son email et mot de passe
 const getUtilisateurByEmail = async (request, response) => {
   pool.query(
-    `SELECT * from utilisateur where email=$1 and mot_de_passe=$2;`,
+    `SELECT * from public."Utilisateur" where email=$1 and mot_de_passe=$2;`,
     [request.body.email, request.body.mot_de_passe],
     (error, results) => {
       if (error) {
@@ -22,7 +22,7 @@ const getUtilisateurByEmail = async (request, response) => {
 // Recuperer un utilisateur par son numero de telephone et mot de passe
 const getUtilisateurByNumeroTelephone = async (request, response) => {
   pool.query(
-    `SELECT * from utilisateur where numero_telephone=$1 and mot_de_passe=$2;`,
+    `SELECT * from public."Utilisateur" where numero_telephone=$1 and mot_de_passe=$2;`,
     [request.body.numero_telephone, request.body.mot_de_passe],
     (error, results) => {
       if (error) {
@@ -39,7 +39,7 @@ const getUtilisateurByNumeroTelephone = async (request, response) => {
 // Ajouter un utilisateur
 const addUtilisateur = async (request, response) => {
   pool.query(
-    `INSERT INTO public.utilisateur(
+    `INSERT INTO public."Utilisateur"(
       email, numero_telephone, nom, prenom, mot_de_passe)
       VALUES ($1, $2, $3, $4, $5);`,
     [
@@ -64,7 +64,7 @@ const addUtilisateur = async (request, response) => {
 // Supprimer un utilisateur
 const deleteUtilisateurByEmail = async (request, response) => {
   pool.query(
-    `DELETE from utilisateur where email=$1;`,
+    `DELETE from public."Utilisateur" where email=$1;`,
     [request.params.email],
     (error, results) => {
       if (error) {

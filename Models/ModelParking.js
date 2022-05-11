@@ -4,7 +4,7 @@ const log = require("../config/Logger");
 
 // Recuperer la liste des parkings
 const getParkings = async (request, response) => {
-  pool.query(`SELECT * from parking;`, (error, results) => {
+  pool.query(`SELECT * from public."Parking";`, (error, results) => {
     if (error) {
       log.loggerConsole.error(error);
       log.loggerFile.error(error);
@@ -18,7 +18,7 @@ const getParkings = async (request, response) => {
 // Recuperer un parking par son id
 const getParkingById = async (request, response) => {
   pool.query(
-    `SELECT * from parking where id_parking=$1;`,
+    `SELECT * from public."Parking" where id_parking=$1;`,
     [request.params.id],
     (error, results) => {
       if (error) {
@@ -35,7 +35,7 @@ const getParkingById = async (request, response) => {
 // Ajouter un parking
 const addParking = async (request, response) => {
   pool.query(
-    `INSERT INTO public.parking(
+    `INSERT INTO public."Parking"(
       photo, nom, commune, etat, capacite, nb_places_libres, latitude, longitude, horaires, tarif)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`,
     [
@@ -65,7 +65,7 @@ const addParking = async (request, response) => {
 // Supprimer un parking
 const deleteParking = async (request, response) => {
   pool.query(
-    `DELETE from parking where id_parking=$1;`,
+    `DELETE from public."Parking" where id_parking=$1;`,
     [request.params.id],
     (error, results) => {
       if (error) {

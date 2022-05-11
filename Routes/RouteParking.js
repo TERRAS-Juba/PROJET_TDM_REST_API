@@ -6,5 +6,8 @@ const serviceParking = require("../Services/ServiceParking");
 routerParking.get("/parking/liste_parkings/", serviceParking.getParkings);
 routerParking.get("/parking/get_parking/:id", serviceParking.getParkingById);
 routerParking.post("/parking/ajouter_parking/", serviceParking.addParking);
-routerParking.delete("/parking/supprimer_parking/:id", serviceParking.deleteParking);
+routerParking.delete(
+  "/parking/supprimer_parking/:id",
+  serviceParking.deleteParking
+);
 module.exports = routerParking;

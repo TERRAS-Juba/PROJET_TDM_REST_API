@@ -26,6 +26,7 @@ app.use(
 );
 const routeParking= require("../Routes/RouteParking");
 const routeUtilisateur=require("../Routes/RouteUtilisateur")
+const routerEvalaution=require("../Routes/RouteEvalauation")
 
 // Configurer le serveur pour utiliser toutes les routes
 app.use(bodyParser.json());
@@ -40,12 +41,13 @@ app.use(
 );
 app.use("/", routeParking);
 app.use("/",routeUtilisateur)
+app.use("/",routerEvalaution)
 app.get("/", (req, res) => {
   res.send("Serveur projet TDM");
 });
 
 // Demarrer le serveur
-app.listen(port, () => console.log("Server running on port 5000 ..."));
+app.listen(port, () => console.log("Server running on port 3000 ..."));
 
 module.exports = {
   app,
