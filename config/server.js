@@ -26,8 +26,9 @@ app.use(
 );
 const routeParking= require("../Routes/RouteParking");
 const routeUtilisateur=require("../Routes/RouteUtilisateur")
-const routerEvalaution=require("../Routes/RouteEvalauation")
-const routerPlace=require("../Routes/RoutePlace")
+const routeEvalaution=require("../Routes/RouteEvalauation")
+const routePlace=require("../Routes/RoutePlace")
+const routePaiement=require("../Routes/RoutePaiement")
 
 // Configurer le serveur pour utiliser toutes les routes
 app.use(bodyParser.json());
@@ -42,8 +43,9 @@ app.use(
 );
 app.use("/", routeParking);
 app.use("/",routeUtilisateur)
-app.use("/",routerEvalaution)
-app.use("/",routerPlace)
+app.use("/",routeEvalaution)
+app.use("/",routePlace)
+app.use("/",routePaiement)
 app.get("/", (req, res) => {
   res.send("Serveur projet TDM");
 });
