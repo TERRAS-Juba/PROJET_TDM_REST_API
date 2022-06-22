@@ -6,7 +6,7 @@ const log = require("../config/Logger");
 const getPlaceLibre = async (request, response) => {
   pool.query(`SELECT * from public."Place" where id_parking=$1 and etat=true limit 1 ;`,
   [
-    request.params.id
+    request.params.id_parking
   ] ,
   (error, results) => {
     if (error) {
@@ -25,7 +25,7 @@ const updateEtatPlace = async (request, response) => {
     `UPDATE public."Place" SET etat=$1 where id_parking=$2 and numero_place=$3;`,
     [
         request.body.etat,
-        request.body.id,
+        request.body.id_parking,
         request.body.numero_place
     ],
     (error, results) => {

@@ -19,7 +19,7 @@ const getParkings = async (request, response) => {
 const getParkingById = async (request, response) => {
   pool.query(
     `SELECT * from public."Parking" where id_parking=$1;`,
-    [request.params.id],
+    [request.params.id_parking],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);
@@ -66,7 +66,7 @@ const addParking = async (request, response) => {
 const deleteParking = async (request, response) => {
   pool.query(
     `DELETE from public."Parking" where id_parking=$1;`,
-    [request.params.id],
+    [request.params.id_parking],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);

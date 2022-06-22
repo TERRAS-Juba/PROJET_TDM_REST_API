@@ -7,7 +7,7 @@ const addPaiement = async (request, response) => {
   pool.query(
     `INSERT INTO public."Paiement"(id_paiement, montant, date_paiement)
 	VALUES ($1, $2, $3);`,
-    [request.body.id, request.body.montant, request.body.date_paiement],
+    [request.body.id_paiement, request.body.montant, request.body.date_paiement],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);

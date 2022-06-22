@@ -35,7 +35,7 @@ const addPlaceParkingReservation = async (request, response) => {
   pool.query(
     `UPDATE public."Reservation"
 	SET  numero_place=$1 WHERE id_reservation=$2;`,
-    [request.body.numero_place, request.body.id],
+    [request.body.numero_place, request.body.id_reservation],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);
@@ -53,7 +53,7 @@ const updateEtatReservation = async (request, response) => {
   pool.query(
     `UPDATE public."Reservation"
       SET  etat=$1 WHERE id_reservation=$2;`,
-    [request.body.etat, request.body.id],
+    [request.body.etat, request.body.id_reservation],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);
