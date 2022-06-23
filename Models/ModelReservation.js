@@ -4,30 +4,34 @@ const log = require("../config/Logger");
 
 // Ajouter une reservation
 const addReservation = async (request, response) => {
-  pool.query(
-    `INSERT INTO public."Reservation"(
-	date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
+  let body = [];
+  body = request.body;
+  body.forEach((element) => {
+    pool.query(
+      `INSERT INTO public."Reservation"(
+	id_reservation,date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`,
-    [
-      request.body.date_reservation,
-      request.body.heure_entree,
-      request.body.heure_sortie,
-      request.body.etat,
-      request.body.numero_place,
-      request.body.id_parking,
-      request.body.id_utilisateur,
-      request.body.id_paiement,
-    ],
-    (error, results) => {
-      if (error) {
-        log.loggerConsole.error(error);
-        log.loggerFile.error(error);
-        response.sendStatus(500);
-      } else {
-        response.sendStatus(200);
+      [
+        element.id_reservation,
+        element.date_reservation,
+        element.heure_entree,
+        element.heure_sortie,
+        element.etat,
+        element.numero_place,
+        element.id_parking,
+        element.id_utilisateur,
+        element.id_paiement,
+      ],
+      (error, results) => {
+        if (error) {
+          log.loggerConsole.error(error);
+          log.loggerFile.error(error);
+          response.sendStatus(500);
+        }
       }
-    }
-  );
+    );
+  });
+  response.sendStatus(200);
 };
 
 // Associer une place de parking a une reservation
@@ -71,7 +75,12 @@ const getReservationBetweenHeureDebutHeureFin = async (request, response) => {
   pool.query(
     `SELECT count(*) as nb_reservations
       FROM public."Reservation" where date_reservation=$1 and heure_entree <=$2 and heure_sortie >=$3 and id_parking=$4;`,
-    [request.body.date_reservation, request.body.heure_entree,request.body.heure_sortie,request.body.id_parking],
+    [
+      request.body.date_reservation,
+      request.body.heure_entree,
+      request.body.heure_sortie,
+      request.body.id_parking,
+    ],
     (error, results) => {
       if (error) {
         log.loggerConsole.error(error);
@@ -88,5 +97,5 @@ module.exports = {
   addReservation,
   addPlaceParkingReservation,
   updateEtatReservation,
-  getReservationBetweenHeureDebutHeureFin
+  getReservationBetweenHeureDebutHeureFin,
 };
