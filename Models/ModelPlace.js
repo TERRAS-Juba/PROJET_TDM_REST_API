@@ -4,9 +4,9 @@ const log = require("../config/Logger");
 
 // Trouver une place libre
 const getPlaceLibre = async (request, response) => {
-  pool.query(`SELECT * from public."Place" where id_parking=$1 and etat=true limit 1 ;`,
+  pool.query(`SELECT * from public."Place" where id_parking=$1 and etat='t' limit 1 ;`,
   [
-    request.params.id_parking
+    request.params.id
   ] ,
   (error, results) => {
     if (error) {

@@ -8,11 +8,9 @@ const addReservation = async (request, response) => {
   body = request.body;
   body.forEach((element) => {
     pool.query(
-      `INSERT INTO public."Reservation"(
-	id_reservation,date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
-	VALUES ($1, $2, $3, $4, $5, $6, $7, $8,$9);`,
+      `INSERT INTO public."Reservation"(date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
+	VALUES ($1, $2, $3, $4, $5, $6, $7,$8);`,
       [
-        element.id_reservation,
         element.date_reservation,
         element.heure_entree,
         element.heure_sortie,
@@ -73,8 +71,7 @@ const updateEtatReservation = async (request, response) => {
 // Recuperer le nombre de de reservation entre une heure de debut et heure fin
 const getReservationBetweenHeureDebutHeureFin = async (request, response) => {
   pool.query(
-    `SELECT count(*) as nb_reservations
-      FROM public."Reservation" where date_reservation=$1 and heure_entree <=$2 and heure_sortie >=$3 and id_parking=$4;`,
+    `select * from public."Reservation" where date_reservation=$1 and id_parking=$4 and (heure_entree < $2) and (heure_sortie<$3 or heure_sortie>$3);`,
     [
       request.body.date_reservation,
       request.body.heure_entree,
