@@ -19,6 +19,22 @@ const getUtilisateurByEmail = async (request, response) => {
   );
 };
 
+// Recuperer un utilisateur par son email et mot de passe
+const getUtilisateurByEmailWithoutPassword = async (request, response) => {
+  pool.query(
+    `SELECT * from public."Utilisateur" where email=$1;`,
+    [request.body.email],
+    (error, results) => {
+      if (error) {
+        log.loggerConsole.error(error);
+        log.loggerFile.error(error);
+        response.sendStatus(500);
+      } else {
+        response.status(200).json(results.rows);
+      }
+    }
+  );
+};
 // Recuperer un utilisateur par son numero de telephone et mot de passe
 const getUtilisateurByNumeroTelephone = async (request, response) => {
   pool.query(
@@ -100,6 +116,7 @@ const deleteUtilisateurByEmail = async (request, response) => {
 
 //Exporter les fonctions CRUD de la table parking
 module.exports = {
+  getUtilisateurByEmailWithoutPassword,
   getUtilisateurByEmail,
   getUtilisateurByNumeroTelephone,
   addUtilisateur,

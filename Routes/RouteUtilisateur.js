@@ -8,6 +8,10 @@ routerUtilisateur.post(
   serviceUtilisateur.getUtilisateurByEmail
 );
 routerUtilisateur.post(
+  "/utilisateur/get_utilisateur_email/",
+  serviceUtilisateur.getUtilisateurByEmailWithoutPassword
+);
+routerUtilisateur.post(
   "/utilisateur/connexion_utilisateur_numero_telephone/",
   serviceUtilisateur.getUtilisateurByNumeroTelephone
 );

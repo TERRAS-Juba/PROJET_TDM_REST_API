@@ -3,46 +3,22 @@ const log = require("../config/Logger");
 
 // Fonctions du service Reservation
 const addReservation = async (request, response) => {
-  try {
-    await ModelReservation.addReservation(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelReservation.addReservation(request, response);
 };
 
 const addPlaceParkingReservation = async (request, response) => {
-  try {
-    await ModelReservation.addPlaceParkingReservation(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelReservation.addPlaceParkingReservation(request, response);
 };
 
 const updateEtatReservation = async (request, response) => {
-  try {
-    await ModelReservation.updateEtatReservation(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelReservation.updateEtatReservation(request, response);
 };
 
 const getReservationBetweenHeureDebutHeureFin = async (request, response) => {
-  try {
-    await ModelReservation.getReservationBetweenHeureDebutHeureFin(
-      request,
-      response
-    );
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelReservation.getReservationBetweenHeureDebutHeureFin(
+    request,
+    response
+  );
 };
 
 //Exporter les fonctions du service Parking

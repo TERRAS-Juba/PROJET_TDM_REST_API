@@ -3,38 +3,20 @@ const log = require("../config/Logger");
 
 // Fonctions du service Evaluation
 const getEvaluationsByIdParking = async (request, response) => {
-  try {
-    await ModelEvaluation.getEvaluationsByIdParking(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelEvaluation.getEvaluationsByIdParking(request, response);
 };
 
 const addEvaluation = async (request, response) => {
-  try {
-    await ModelEvaluation.addEvaluation(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelEvaluation.addEvaluation(request, response);
 };
 
 const deleteEvaluation = async (request, response) => {
-  try {
-    await ModelEvaluation.deleteEvaluation(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelEvaluation.deleteEvaluation(request, response);
 };
 
 //Exporter les fonctions du service Parking
 module.exports = {
- getEvaluationsByIdParking,
- addEvaluation,
- deleteEvaluation
+  getEvaluationsByIdParking,
+  addEvaluation,
+  deleteEvaluation,
 };

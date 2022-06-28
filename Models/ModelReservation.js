@@ -71,7 +71,7 @@ const updateEtatReservation = async (request, response) => {
 // Recuperer le nombre de de reservation entre une heure de debut et heure fin
 const getReservationBetweenHeureDebutHeureFin = async (request, response) => {
   pool.query(
-    `select * from public."Reservation" where date_reservation=$1 and id_parking=$4 and (heure_entree < $2) and (heure_sortie<$3 or heure_sortie>$3);`,
+    `select * from public."Reservation" where date_reservation=$1 and id_parking=$4 and (((heure_entree < $2) and (heure_sortie<$3 or heure_sortie>$3)) or ((heure_entree>$2) and (heure_sortie<$3)) );`,
     [
       request.body.date_reservation,
       request.body.heure_entree,

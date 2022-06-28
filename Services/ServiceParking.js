@@ -3,43 +3,19 @@ const log = require("../config/Logger");
 
 // Fonctions du service Parking
 const getParkings = async (request, response) => {
-  try {
-    await ModelParking.getParkings(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelParking.getParkings(request, response);
 };
 
 const getParkingById = async (request, response) => {
-  try {
-    await ModelParking.getParkingById(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelParking.getParkingById(request, response);
 };
 
 const addParking = async (request, response) => {
-  try {
-    await ModelParking.addParking(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelParking.addParking(request, response);
 };
 
 const deleteParking = async (request, response) => {
-  try {
-    await ModelParking.deleteParking(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelParking.deleteParking(request, response);
 };
 
 //Exporter les fonctions du service Parking
@@ -47,5 +23,5 @@ module.exports = {
   getParkings,
   getParkingById,
   addParking,
-  deleteParking
+  deleteParking,
 };

@@ -3,23 +3,11 @@ const log = require("../config/Logger");
 
 // Fonctions du service Place
 const getPlaceLibre = async (request, response) => {
-  try {
-    await ModelPlace.getPlaceLibre(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelPlace.getPlaceLibre(request, response);
 };
 
 const updateEtatPlace = async (request, response) => {
-  try {
-    await ModelPlace.updateEtatPlace(request, response);
-  } catch (error) {
-    log.loggerConsole.error(error);
-    log.loggerFile.error(error);
-    response.sendStatus(500);
-  }
+  await ModelPlace.updateEtatPlace(request, response);
 };
 
 //Exporter les fonctions du service Parking
