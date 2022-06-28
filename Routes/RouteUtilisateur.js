@@ -15,8 +15,8 @@ routerUtilisateur.post(
   "/utilisateur/ajouter_utilisateur/",
   serviceUtilisateur.addUtilisateur
 );
-routerUtilisateur.delete(
-  "/utilisateur/supprimer_utilisateur_email/:email",
-  serviceUtilisateur.deleteUtilisateurByEmail
+routerUtilisateur.post(
+  "/utilisateur/update_utilisateur_device_token/",
+  serviceUtilisateur.updateDeviceTokenUtilisateur
 );
 module.exports = routerUtilisateur;

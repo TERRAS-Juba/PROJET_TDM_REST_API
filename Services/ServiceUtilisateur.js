@@ -41,11 +41,21 @@ const deleteUtilisateurByEmail = async (request, response) => {
     response.sendStatus(500);
   }
 };
+// Modifier le device token d'un utilisateur
+const updateDeviceTokenUtilisateur = async (request, response) => {
+  try {
+    await ModelUtilisateur.updateDeviceTokenUtilisateur(request, response);
+  } catch (error) {
+    log.loggerConsole.error(error);
+    log.loggerFile.error(error);
+    response.sendStatus(500);
+  }
+};
 
 //Exporter les fonctions du service Parking
 module.exports = {
   getUtilisateurByEmail,
   getUtilisateurByNumeroTelephone,
   addUtilisateur,
-  deleteUtilisateurByEmail,
+  updateDeviceTokenUtilisateur
 };

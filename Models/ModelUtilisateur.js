@@ -40,14 +40,15 @@ const getUtilisateurByNumeroTelephone = async (request, response) => {
 const addUtilisateur = async (request, response) => {
   pool.query(
     `INSERT INTO public."Utilisateur"(
-      email, numero_telephone, nom, prenom, mot_de_passe)
-      VALUES ($1, $2, $3, $4, $5);`,
+      email, numero_telephone, nom, prenom, mot_de_passe,device_token)
+      VALUES ($1, $2, $3, $4, $5,$6);`,
     [
       request.body.email,
       request.body.numero_telephone,
       request.body.nom,
       request.body.prenom,
       request.body.mot_de_passe,
+      request.body.device_token
     ],
     (error, results) => {
       if (error) {
@@ -61,6 +62,25 @@ const addUtilisateur = async (request, response) => {
   );
 };
 
+// Modifier le device token d'un utilisateur
+const updateDeviceTokenUtilisateur = async (request, response) => {
+  pool.query(
+    `Update public."Utilisateur" set device_token=$1 where email=$2`,
+    [
+      request.body.device_token,
+      request.body.email
+    ],
+    (error, results) => {
+      if (error) {
+        log.loggerConsole.error(error);
+        log.loggerFile.error(error);
+        response.sendStatus(500);
+      } else {
+        response.sendStatus(200);
+      }
+    }
+  );
+};
 // Supprimer un utilisateur
 const deleteUtilisateurByEmail = async (request, response) => {
   pool.query(
@@ -84,4 +104,5 @@ module.exports = {
   getUtilisateurByNumeroTelephone,
   addUtilisateur,
   deleteUtilisateurByEmail,
+  updateDeviceTokenUtilisateur
 };

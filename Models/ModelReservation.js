@@ -8,9 +8,9 @@ const addReservation = async (request, response) => {
   body = request.body;
   body.forEach((element) => {
     pool.query(
-      `INSERT INTO public."Reservation"(date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
-	VALUES ($1, $2, $3, $4, $5, $6, $7,$8);`,
-      [
+      `INSERT INTO public."Reservation"(id_reservation,date_reservation, heure_entree, heure_sortie, etat, numero_place, id_parking, id_utilisateur, id_paiement)
+	VALUES ($1, $2, $3, $4, $5, $6, $7,$8,$9);`,
+      [ element.id_reservation,
         element.date_reservation,
         element.heure_entree,
         element.heure_sortie,
